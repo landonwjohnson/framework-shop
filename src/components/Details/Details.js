@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import "./Details.css"
 
@@ -7,19 +8,26 @@ import { addToCart } from "../../ducks/product";
 
 export function Details( { addToCart, history, products, match } ) {
 
-	const product = {}
+	const product = products.find( product => product.name === match.params.name )
 
 	const {
-		  description
-		, id
-		, logo
-		, name
-		, price
+		description,
+		id,
+		logo,
+		name,
+		price,
 	} = product;
+
+	function addToCartAndRedirect() {
+		addToCart( id );
+		history.goBack();
+	}
 
 	return (
 		<div className="details">
-			<h3 className="details__back-to-shop">Back to shop</h3>
+			<Link to="/shop">
+				<h3 className="details__back-to-shop">Back to shop</h3>
+			</Link>
 			<img
 				alt={ name }
 				className="details__logo"
@@ -29,7 +37,7 @@ export function Details( { addToCart, history, products, match } ) {
 			<p className="details__description">{ description }</p>
 			<button
 				className="details__buy"
-				onClick={ addToCart( id ) }
+				onClick={ addToCartAndRedirect }
 			>
 				Buy now for ${ price }!
 			</button>
