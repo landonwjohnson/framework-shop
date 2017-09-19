@@ -7,8 +7,19 @@ import jQueryLogo from "./assets/jquery.svg";
 import meteorLogo from "./assets/meteor.svg";
 import reactLogo from "./assets/react.svg";
 import vueLogo from "./assets/vue.svg";
+import mongoDBLogo from "./assets/mongodb.png";
 
 export default [
+	{ 
+		description: "MongoDB Yo!",
+		featured: true,
+		id: 10,
+		logo: mongoDBLogo,
+		name: "MongoDB",
+		onSale: true,
+		price: 5.99
+	},
+		
 	{
 		description: "Learn one way to build applications with Angular and reuse your code and abilities to build apps for any deployment target. For web, mobile web, native mobile and native desktop."
 		, featured: false
